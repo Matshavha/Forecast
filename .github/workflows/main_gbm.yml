@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'gbm'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CBCCD8C8886C437AAF274342AA9F77CE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C12E85B107DA4A36957AA2231421DC32 }}
