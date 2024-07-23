@@ -40,11 +40,9 @@ def home():
 def predict():
     try:
         logging.info("Prediction request received.")
-        # Collect input features from the form
         input_features = {key: request.form[key] for key in request.form.keys()}
         logging.info(f"Input features: {input_features}")
-        
-        # Process input data to match the model's expected format
+
         input_features_processed = {}
         for key, value in input_features.items():
             try:
@@ -52,15 +50,12 @@ def predict():
             except ValueError:
                 input_features_processed[key] = [value]
 
-        # Convert processed input data to DataFrame
         input_df = pd.DataFrame.from_dict(input_features_processed)
         logging.info(f"Processed input DataFrame: {input_df}")
-        
-        # Predict using the loaded pipeline
+
         predicted_energy = pipeline.predict(input_df)[0]
         logging.info(f"Prediction result: {predicted_energy}")
-        
-        # Return the prediction result
+
         return jsonify(prediction=predicted_energy)
     except Exception as e:
         logging.error(f"Error during prediction: {e}")
@@ -69,3 +64,4 @@ def predict():
 if __name__ == '__main__':
     logging.info("Starting Flask application.")
     app.run(debug=False, host='0.0.0.0', port=8000)
+
